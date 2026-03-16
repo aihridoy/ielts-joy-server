@@ -5,6 +5,8 @@ const app = express();
 const { connectDB } = require("./utils/db");
 const { port } = require("./utils/config");
 
+const authRoutes = require("./routes/authRoutes");
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -26,6 +28,9 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+//Routes
+app.use("/api/auth", authRoutes);
 
 // 404 handler - Route not found
 app.use((req, res) => {
