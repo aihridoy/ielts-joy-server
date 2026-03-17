@@ -6,6 +6,7 @@ const { connectDB } = require("./utils/db");
 const { port } = require("./utils/config");
 
 const authRoutes = require("./routes/authRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // Middleware
 app.use(cors());
@@ -31,6 +32,7 @@ app.get("/health", (req, res) => {
 
 //Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // 404 handler - Route not found
 app.use((req, res) => {
