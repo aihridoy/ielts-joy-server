@@ -7,6 +7,7 @@ const { port } = require("./utils/config");
 
 const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const testimonialRoutes = require("./routes/testimonialRoutes");
 
 // Middleware
 app.use(cors());
@@ -33,6 +34,7 @@ app.get("/health", (req, res) => {
 //Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/testimonials", testimonialRoutes);
 
 // 404 handler - Route not found
 app.use((req, res) => {
