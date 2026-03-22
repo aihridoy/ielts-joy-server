@@ -5,6 +5,7 @@ const {
   getPostById,
   getAllPosts,
   createPost,
+  uploadInlineImage,
   updatePost,
   deletePost,
   togglePublish,
@@ -19,6 +20,12 @@ router.get("/:id", getPostById);
 // Admin
 router.get("/admin/all", verifyToken, getAllPosts);
 router.post("/", verifyToken, upload.single("coverImage"), createPost);
+router.post(
+  "/upload-image",
+  verifyToken,
+  upload.single("image"),
+  uploadInlineImage,
+);
 router.put("/:id", verifyToken, upload.single("coverImage"), updatePost);
 router.delete("/:id", verifyToken, deletePost);
 router.patch("/:id/toggle-publish", verifyToken, togglePublish);
