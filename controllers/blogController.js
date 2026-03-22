@@ -57,6 +57,18 @@ exports.createPost = async (req, res) => {
   }
 };
 
+// ADMIN — Upload inline image for editor
+exports.uploadInlineImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No image provided" });
+    }
+    res.status(200).json({ url: req.file.path });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 // ADMIN — Update post
 exports.updatePost = async (req, res) => {
   try {
